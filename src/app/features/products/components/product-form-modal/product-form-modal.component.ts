@@ -106,9 +106,14 @@ export class ProductModalComponent implements OnChanges {
         } else {
           errs.id = '';
         }
-      } catch (error) {
-        console.error('Error validando ID', error);
-        valid = false;
+      } catch (error: any) {
+        if (error.status === 404) {
+          errs.id = '';
+        } else {
+          console.error('Error validando ID', error);
+          valid = false;
+          errs.id = 'Error validando ID';
+        }
       }
     }
 
