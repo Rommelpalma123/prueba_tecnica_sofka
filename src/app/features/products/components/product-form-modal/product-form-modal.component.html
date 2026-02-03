@@ -1,0 +1,87 @@
+<div class="fixed inset-0 bg-gray-700/80 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl w-full max-w-2xl shadow-lg p-8">
+    <h2 class="text-xl font-semibold mb-4 text">
+      {{ product ? 'Formulario de edición' : 'Formulario de creación' }}
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block font-medium mb-1">Id</label>
+        <input
+          type="text"
+          [(ngModel)]="form.id"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().id }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().id }}</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Nombre</label>
+        <input
+          type="text"
+          [(ngModel)]="form.name"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().name }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().name }}</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Descripción</label>
+        <input
+          type="text"
+          [(ngModel)]="form.description"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().description }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().description }}</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Logo (URL)</label>
+        <input
+          type="text"
+          [(ngModel)]="form.logo"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().logo }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().logo }}</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Fecha de Liberación</label>
+        <input
+          type="date"
+          [(ngModel)]="inputDateRelease"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().date_release }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().date_release }}</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1">Fecha de Revisión</label>
+        <input
+          type="date"
+          [(ngModel)]="inputDateRevision"
+          class="w-full border p-2 rounded"
+          [ngClass]="{ 'border-red-500': errors().date_revision }"
+        />
+        <p class="text-red-500 text-sm">{{ errors().date_revision }}</p>
+      </div>
+    </div>
+
+    <div class="flex justify-end gap-4 mt-6">
+      <button class="px-6 py-2 rounded-md bg-gray-100 hover:bg-gray-200" (click)="onCancel.emit()">
+        Cancelar
+      </button>
+      <button
+        class="px-6 py-2 rounded-md bg-yellow-200 text-yellow-900 hover:bg-yellow-300"
+        (click)="confirm()"
+      >
+        {{ product ? 'Guardar' : 'Crear' }}
+      </button>
+    </div>
+  </div>
+</div>

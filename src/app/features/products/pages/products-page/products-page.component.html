@@ -1,0 +1,24 @@
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="bg-white rounded-xl shadow-sm p-6">
+    <app-products-table
+      [products]="products"
+      (add)="openCreateModal()"
+      (edit)="openEditModal($event)"
+      (remove)="onRemove($event)"
+    ></app-products-table>
+
+    <app-product-modal
+      *ngIf="showModal()"
+      [product]="productToEdit()"
+      (onSave)="saveProduct($event)"
+      (onCancel)="showModal.set(false)"
+    ></app-product-modal>
+
+    <app-confirm-delete-modal
+      *ngIf="productToDelete()"
+      [title]="productToDelete()!.name"
+      (confirm)="confirmDelete()"
+      (cancel)="cancelDelete()"
+    ></app-confirm-delete-modal>
+  </div>
+</div>
